@@ -29,7 +29,10 @@ def create_article(request, payload: ArticleIn):
         author = User.objects.get(id=passed['author'])
         del passed['author']
         article = Article.objects.create(author=author, **passed)
-        return {'detail': "The specific user cannot be found."}
+        return {
+            'detail': "Article has been successfully created.",
+            'id': article.id,
+        }
     except User.DoesNotExist:
         return {'detail': "The specific user cannot be found."}
 
