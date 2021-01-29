@@ -1,6 +1,2 @@
-asgiref==3.3.1
 Django==3.1.5
 django-ninja==0.10.1
-pydantic==1.7.3
-pytz==2020.5
-sqlparse==0.4.1
