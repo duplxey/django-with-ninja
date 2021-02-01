@@ -10,7 +10,7 @@ from blog.schemas import ArticleOut, ArticleIn
 router = Router()
 
 
-@router.post("/articles/create")
+@router.post('/articles/create')
 def create_article(request, payload: ArticleIn):
     data = payload.dict()
     try:
@@ -18,20 +18,20 @@ def create_article(request, payload: ArticleIn):
         del data['author']
         article = Article.objects.create(author=author, **data)
         return {
-            'detail': "Article has been successfully created.",
+            'detail': 'Article has been successfully created.',
             'id': article.id,
         }
     except User.DoesNotExist:
-        return {'detail': "The specific user cannot be found."}
+        return {'detail': 'The specific user cannot be found.'}
 
 
-@router.get("/articles/{article_id}", response=ArticleOut)
+@router.get('/articles/{article_id}', response=ArticleOut)
 def get_article(request, article_id: int):
     article = get_object_or_404(Article, id=article_id)
     return article
 
 
-@router.get("/articles", response=List[ArticleOut])
+@router.get('/articles', response=List[ArticleOut])
 def get_articles(request):
     articles = Article.objects.all()
     return articles
