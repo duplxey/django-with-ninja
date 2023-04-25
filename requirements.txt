@@ -1,2 +1,2 @@
-Django==3.1.5
-django-ninja==0.10.1
+Django==4.2
+django-ninja==0.21.0
